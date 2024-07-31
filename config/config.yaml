@@ -1,0 +1,22 @@
+project_id: 'vertextutorial-429522'
+bucket_uri: 'gs://mlops_churn_bucket'
+artifact_folder: 'artifacts_mlops_project'
+region: 'us-central1'
+experiment_name: 'experiment-mlops-project'
+data_path: 'gs://mlops_churn_bucket/Churn_Modeling_Main.csv'
+
+model_type: 'random-forest'  # or 'random-forest'
+
+xgboost:
+  param_grid:
+    n_estimators: [100, 200]
+    max_depth: [3, 5]
+    learning_rate: [0.01, 0.1]
+    gamma: [0, 0.1]
+    random_state: [42]
+
+random-forest:
+  param_grid:
+    n_estimators: [50, 100, 200]
+    max_depth: [5, 10]
+    random_state: [42]
