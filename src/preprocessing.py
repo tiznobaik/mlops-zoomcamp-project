@@ -3,6 +3,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
+import logging
 
 def preprocess_data(df):
     # Drop unnecessary columns
@@ -45,8 +46,12 @@ def transform_data(X_train, X_valid, preprocessor):
 if __name__ == "__main__":
     from loading_data import load_config, load_data
     config = load_config()
-    df = load_data(config['data_path'], config['project_id'])
+    data_path = config['data']['file_path']
+    project_id = config['project']['project_id']
+    df = load_data(data_path, project_id)
     df, preprocessor = preprocess_data(df)
     X_train, X_valid, y_train, y_valid = split_data(df)
     X_train_preprocessed, X_valid_preprocessed = transform_data(X_train, X_valid, preprocessor)
+    
+    # logging.info("Data preprocessed successfully.")
     print("Data preprocessed successfully.")

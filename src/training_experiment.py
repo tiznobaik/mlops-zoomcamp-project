@@ -107,7 +107,7 @@ def main():
     # Initialize the AI Platform with the experiment name
     ai.init(experiment=config['experiment_name'])
 
-    df = load_data(config['data_path'], config['project_id'])
+    df = load_data(config['data']['file_path'], config['project']['project_id'])
     df, preprocessor = preprocess_data(df)
     X_train, X_valid, y_train, y_valid = split_data(df)
     X_train_preprocessed, X_valid_preprocessed = transform_data(X_train, X_valid, preprocessor)
